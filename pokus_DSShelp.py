@@ -12,14 +12,22 @@ makepy.main()
 
 DSSObject = win32com.client.Dispatch("OpenDSSEngine.DSS")
 
+# Start OpenDSS engine (0 means normal mode, 1 means minimized mode)
+if not DSSObject.Start(0):
+    print('Unable to start OpenDSS')
+    exit()
+
 DSSText = DSSObject.Text
+
 DSSCircuit = DSSObject.ActiveCircuit
 
 # Compile a model
+DSSText.Command = 'compile "C:/Users/krist/Desktop/MODEE/OpenDSS/Hlavne-zadanie-Kost.txt"'
+DSSActiveBus = DSSCircuit.ActiveBus
+# Sets bus "myBus" as the active Bus
+DSSCircuit.SetActiveBus('myBus')
 
-DSSText.Command = 'compile "C:/Program Files/OpenDSS/EPRITestCircuits/ckt5/Transformers_ckt5.dss"'
-
-DSSXfmr = DSSCircuit.Transformers
-
+mykVBase = DSSActiveBus.kVBase
+print(mykVBase)
 
 
