@@ -34,7 +34,7 @@ print(myVolt)
 # print(myVolt)
 # mySize = len(myVolt)
 # myVMagAng = []
-# # somarina = []
+# somarina = []
 # for i in range(len(myVolt) - 1):
 #     complex_number = complex(myVolt[i],myVolt[i + 1])
 #     mag = abs(complex_number)
