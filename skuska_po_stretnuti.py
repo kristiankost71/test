@@ -24,31 +24,21 @@ dss_engine.Text.Command = 'New Line.VED Bus1=A.1.2.3.4 Bus2=B.1.2.3.4 Geometry =
 dss_engine.Text.Command = 'New Load.zataz bus=B.1.2.3  kv=400 kw=150000 pf=0.78 model=1 Vmaxpu=2 Vminpu=0.0'
 dss_engine.ActiveCircuit.Solution.Solve()
 
-dss_engine.Text.Command = 'Show Voltage LL Nodes'
+dss_engine.Text.Command = 'Show Voltage LN Nodes'
 #dss_engine.Text.Command = 'Show current Elem'
-#dss_engine.Text.Command = 'Show lineconstants freq=50 units=km '
 
 DSSCircuit.SetActiveBus('A')
-myVolt = DSSActiveBus.NumNodes
+myVolt = DSSActiveBus.VMagAngle
 print(myVolt)
-# print(myVolt)
-# mySize = len(myVolt)
-# myVMagAng = []
-# somarina = []
-# for i in range(len(myVolt) - 1):
-#     complex_number = complex(myVolt[i],myVolt[i + 1])
-#     mag = abs(complex_number)
-#     ang = angle(complex_number
-#     myVMagAng.append([round(mag/1000,2), round(ang,2)])
-#
-# for item in myVMagAng:
-#     print(item)
-#
-#
-# # cislo = complex(5,6)  # Vytvoříme komplexní číslo
-# # somarina.append(cmath.polar(cislo))
-# # print(cislo)
-# # print(somarina)
+mySize = len(myVolt)
+print(mySize)
+VoltageIN = []
+for i in range(0,mySize-1,2):
+     VoltageIN.append(round((myVolt[i])/1000,3))
+for item in VoltageIN:
+     print(item)
+
+
 
 
 
